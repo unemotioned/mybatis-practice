@@ -42,7 +42,6 @@ objects, and handle complex database operations with minimal code.
 - [Data Types](#data-types)
 - [Dynamic If](#dynamic-if)
 - [Dynamic For](#dynamic-for)
-- [Trouble Shooting](#trouble-shooting)
 
 ---
 
@@ -98,7 +97,7 @@ Check `download external resources like referenced dtd, xsd` checkbox
 Specify connection with the database
 
 1. Under `src/main` create new `source folder` named `resources`
-2. Create `XML file` under the resource folder named `mybatis-config`
+2. Create `XML file` under the resources folder named `mybatis-config`
 3. Check `create file using a DTD or XML scheme file` checkbox
 4. Select `xml catalog entry`
 5. Click `User Specified Entries` select the one with `config`
@@ -106,6 +105,7 @@ Specify connection with the database
 
 ```xml
 <settings>
+    <!-- Sends SQL `NULL` when Java value is `null`, preventing driver issues -->
     <setting name="jdbcTypeForNull" value="NULL" />
 </settings>
 
@@ -138,7 +138,7 @@ Mapper files with XML extensions are where the queries will be written.
 
 ## Aliases
 
-At `resource/mybatis-config.xml` add the following code inside the
+At `resources/mybatis-config.xml` add the following code inside the
 `configuration` tag after `settings` tag
 
 ```xml
@@ -154,17 +154,19 @@ full path
 
 ## Data Types
 
-| Type   | MyBatis Type     |
-| ------ | ---------------- |
-| int    | \_int            |
-| short  | \_short          |
-| byte   | \_byte           |
-| float  | \_float          |
-| double | \_double         |
-| String | string           |
-| Map    | map              |
-| Hash   | hashmap (or map) |
-| Date   | date             |
+| Type    | MyBatis Type |
+| ------- | ------------ |
+| int     | \_int        |
+| short   | \_short      |
+| long    | \_long       |
+| byte    | \_byte       |
+| float   | \_float      |
+| double  | \_double     |
+| boolean | \_boolean    |
+| String  | string       |
+| Map     | map          |
+| Hash    | hashmap      |
+| Date    | date         |
 
 ---
 
@@ -232,24 +234,4 @@ full path
             #{id}
         </foreach>
 </select>
-```
-
----
-
-## Trouble Shooting
-
-### java.io.IOException: Could not find resource mybatis-config.xml
-
-- `resource` folder path not being registered in in `.classpath`
-
-1. Package Explorer > right click `resource` folder
-2. Select `Build Path` > `Use as Source Folder`
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-    ...
-    <classpathentry kind="src" path="resource"/>
-    ...
-</classpath>
 ```
