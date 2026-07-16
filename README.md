@@ -54,8 +54,7 @@ Check [unemotioned/bulletin-board](https://github.com/unemotioned/bulletin-board
 
 click on `User Specified Entries` and then `Add...`
 
-> **NOTE**
->
+> [!IMPORTANT]
 > Make sure there is no trailing space.
 
 #### Add Config
